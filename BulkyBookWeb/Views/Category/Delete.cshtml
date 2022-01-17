@@ -1,0 +1,35 @@
+﻿@model Category
+
+<form method="post" asp-action="DeletePost"> @*explicitly defining action name*@
+    <input asp-for="Id"hidden /> @*not abled to pass diabled field value, so created hidden field*@
+    <div class="border p-3 mt-4">
+        @*Header*@
+        <div class="row pb-2">
+            <h1 class="text-primary">Delete Category</h1>
+            <hr />
+        </div>
+        @*Name Field*@
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name"class="form-control" disabled="disabled"/>
+            <span asp-validation-for="Name" class="text-danger" ></span>
+        </div>
+        @*Dispay Order Field*@
+         <div class="mb-3">
+            <label asp-for="DisplayOrder" ></label>
+            <input asp-for="DisplayOrder" class="form-control" disabled="disabled"/>
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+         </div>
+         @*Buttons*@
+         <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+         <a asp-controller="Category" asp-action="Index" style="width:150px" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>
+
+@*This section is to add basic model validations adding to client side*@
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
